@@ -23,6 +23,7 @@ import {
 
 import Sidebar from "../components/Sidebar";
 import SEO from "../components/SEO";
+import { toast } from 'react-toastify';
 
 
 const Setup = () => {
@@ -50,7 +51,7 @@ const Setup = () => {
       !setup.role ||
       !setup.questionCount
     ) {
-      alert("Please select all options");
+      toast.error("Please select all options");
       return;
     }
 

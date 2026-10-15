@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { toast } from 'react-toastify';
 
 const useSpeechRecognition = () => {
     const [isListening, setIsListening] = useState(false);
@@ -15,7 +16,7 @@ const useSpeechRecognition = () => {
             window.webkitSpeechRecognition;
 
         if (!SpeechRecognition) {
-            alert("Speech recognition is not supported in this browser");
+            toast.error("Speech recognition is not supported in this browser");
             return;
         }
 

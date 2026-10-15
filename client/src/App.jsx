@@ -10,6 +10,7 @@ import ProtectedRoutes from './components/ProtectedRoutes'
 import Result from './pages/Result'
 import RecentActivity from './pages/RecentActivityPage'
 import FAQ from './pages/FAQ'
+import { ToastContainer } from 'react-toastify'
 
 function App() {
 
@@ -50,6 +51,7 @@ function App() {
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<Signup/>}/>
       </Routes>
+      <ToastContainer position="top-right" autoClose={3000} progressClassName="toast-progress"/>
     </>
   )
 }

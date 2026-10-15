@@ -140,17 +140,16 @@ const getResult = async (req, res) => {
 const getRecentResults = async(req,res)=>{
     try{
 
-        const sessions = await InterviewSession.find({
+        const totalsessions = await InterviewSession.find({
             user:req.user.id
         })
         .sort({createdAt:-1})
-        .limit(5)
 
         const results = await Result.find({
             user:req.user.id
         })
 
-        const recentResults = sessions.map((session)=>{
+        const recentResults = totalsessions.map((session)=>{
             const result = results.find((result)=>result.interviewId.toString() === session._id.toString())
             if(!result){
                 return null
@@ -168,9 +167,12 @@ const getRecentResults = async(req,res)=>{
             }
         })
         .filter(Boolean)
+
+        const limitedRecentResults = recentResults.slice(0,5)
         
         res.status(200).json({
-            results:recentResults 
+            allresults:recentResults,
+            limitedresults:limitedRecentResults 
         })
     } catch (err) {
         console.error(err);

@@ -15,6 +15,7 @@ import insightApi from '../api/insightapi'
 import useSpeechRecognition from "../hooks/useSpeechRecognition";
 import Loader from '../components/Loader'
 import SEO from '../components/SEO'
+import { toast } from 'react-toastify';
 
 
 
@@ -134,7 +135,7 @@ const Interview = () => {
 
 
 
-      alert(res.data.message)
+      toast.success(res.data.message)
       console.log(res.data.newAnswers)
 
       navigate(`/results/${sessionId}`)

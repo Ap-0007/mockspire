@@ -31,7 +31,7 @@ const RecentActivity = () => {
       const res = await getRecentResults();
 
       console.log(res)
-      setRecentResults(res.data.results || [])
+      setRecentResults(res.data.limitedresults || [])
     } catch (err) {
       console.log(err)
     } finally {

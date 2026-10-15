@@ -22,7 +22,7 @@ const Contact = () => {
             const res = await api.post("api/contact",data)
 
             console.log(res.data);
-            alert(res.data.message)
+            toast.success(res.data.message)
             e.target.reset();
         } catch(err){
             console.error("Failed to send message: ",err)

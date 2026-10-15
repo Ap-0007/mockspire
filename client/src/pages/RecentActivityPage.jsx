@@ -55,7 +55,7 @@ const RecentActivityPage = () => {
     try {
       const res = await getRecentResults();
 
-      setRecentResults(res.data.results || []);
+      setRecentResults(res.data.allresults || []);
     } catch (err) {
       console.log(err);
     } 

@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import Logo from '../components/Logo';
 import SEO from '../components/SEO';
+import { toast } from 'react-toastify';
 
 
 const Signup = () => {
@@ -35,7 +36,7 @@ const Signup = () => {
         }
       );
 
-      alert(res.data.message);
+      toast.success(res.data.message);
       setName("");
       setEmail("");
       setPassword("");
@@ -43,7 +44,7 @@ const Signup = () => {
       navigate("/login")
 
     } catch (err) {
-      alert(err.response?.data?.message || "Somthing went wrong")
+      toast.error(err.response?.data?.message || "Somthing went wrong")
     }finally{
       setLoading(false)
     }

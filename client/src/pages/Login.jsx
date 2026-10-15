@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import Logo from '../components/Logo';
 import SEO from '../components/SEO';
+import { toast } from 'react-toastify';
 
 
 const Login = () => {
@@ -31,7 +32,7 @@ const Login = () => {
 
         localStorage.setItem("token",res.data.token);
 
-        alert(res.data.message)
+        toast.success(res.data.message)
 
         setEmail("");
         setPassword("");
@@ -40,7 +41,7 @@ const Login = () => {
 
 
       } catch(err){
-        alert(err.response?.data?.message || "Something went wrong");
+        toast.error(err.response?.data?.message || "Something went wrong");
       } finally{
         setLoading(false)
       }
@@ -180,8 +181,7 @@ const Login = () => {
                             >
                             {loading ? (
                                 <>
-                                    <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
-                                        Signing in...
+                                    <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" /> Signing in...
                                     </>
                                 ) : (
                                     "Sign In"
